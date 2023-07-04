@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User | New Employee</title>
+    <link rel="stylesheet" href="employee.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Spartan", sans-serif;
+        }
+
+        /* Global Styles */
+        body{
+            width: 100%;
+            display: flex;
+            background-color: #f7f7f7;
+        }
+
+        h1{
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            /* line-height: 64px; */
+            color: #222;
+        }
+
+        h6 {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        p{
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        .section-pl{
+            padding: 40px 80px;
+        }
+
+        .section-ml{
+            margin: 40px 0;
+        }
+
+        .sidebar {
+            width: fit-content;
+            background-color: #008080; /* Teal color */
+            color: #ffffff; /* Text color */
+            height: 100vh;
+            overflow-y:auto;
+
+        }
+
+        .sidebar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: fixed;
+
+        }
+        .sidebar .item{
+            line-height: 40px;
+        }
+        
+        .sidebar .menu .sub-btn {
+            padding: 10px;
+        }
+
+        .sidebar  a {
+            color: #ffffff; /* Link color */
+            text-decoration: none;
+            cursor: pointer;
+        }  
+
+        .sidebar a:hover {
+            opacity: 80%;
+        }
+
+        .menu{
+            width: fit-content;
+        }
+
+        .sub-menu{
+            line-height: 10px;
+            background: #008080;
+            display: none;
+            padding-left: 10px;
+            font-size: smaller;
+
+        }
+        .sub-menu a{
+            font-size: smaller;
+            text-decoration: none;
+            color:#fff;
+            display: list-item;
+            padding: 10px;
+
+        }
+        .sub-menu a:hover{
+            opacity: 80%;
+        }
+
+        .rotate{
+            transform: rotate(90deg);
+        }
+
+        .item a .dropdown{
+            color: #fff;
+            margin: 5px;
+            transition: 0.3s ease;
+        }
+        h1 {
+        text-align: center;
+        }
+        
+        .Econtainer {
+        max-width: 500px;
+        margin: 0 auto;
+        margin-left: 250px;
+        }
+        .Econtainer .heading .box{
+        color: black;
+        background-color:rgb(231, 231, 231);
+        display: inline-block;
+        width: fit-content; /* Adjust the width as needed */
+        height: 30px; /* Adjust the height as needed */
+        text-align: center; /* Center the link content */
+        line-height: 30px; /* Vertically center the link content */
+        text-decoration: none; /* Remove underline */
+        box-shadow: 0.5px 0.5px 0.5px #008080 ; /* Add box shadow */
+        }
+
+        .Econtainer .heading .box:hover{
+            opacity: 70%;
+        }
+
+        
+        .form-group {
+        margin-bottom: 5px;
+        }
+        
+        .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group input[type="file"],
+        .form-group select {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        }
+        .form-group select {
+        height: 36px;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        
+        .form-group input[type="submit"] {
+        background-color: #008080;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        }
+        
+        .form-group input[type="submit"]:hover {
+        background-color: #45a049;
+        }
+
+        .form-group label{
+            margin-top: 2.9px;
+        }
+
+        .wrapper{
+            display: flex;
+        }
+        .earningsdeduction{
+            display: none;
+        }
+        .preproinfo{
+            display: flex;
+            gap: 30px;
+        }
+            /*Sidebar Logo*/
+    .sidebar .menu .item .logo img
+    {
+        width: 180px;
+        height: fit-content;
+        margin-left: 20px;
+        margin-top: 20px;   
+    }
+
+    .sidebar hr
+    {
+        margin-top: 20px;
+        opacity: 30%;
+    }
+
+    /* CSS styles for the select2 dropdown */
+    .form-group .allowanceSelect,
+    .form-group .deductionSelect
+    {
+        width: 300px;
+        border: 1px solid #ccc;
+    }
+
+    .payrolcontainer{
+        display: flex;
+
+    }
+
+    .otherpayroldetails{
+        margin-top: 100px;
+        margin-left: 30px;
+    }
+ 
+  
+
+    </style>
+</head>
+<body>
+    <!--sidebar starts here-->
+    <section class="header">
+        <div class="sidebar">
+            <div class="menu">
+                <div class="item">
+                    <a href="user-dashboard.html" class="logo"><img src="/img/Logo new.png" alt=""></a>
+                </div>
+                <hr>
+                <div class="item">
+                    <a class="sub-btn">SETTINGS<i class="fas fa-caret-right dropdown" style="margin-left: 100px;"></i></a>
+                    <div class="sub-menu">
+                        <a href="co-info.html" class="sub-item">Company Information</a>
+                        <a href="user-info.html" class="sub-item">User Information</a>
+                    </div>
+                </div>  
+                <div class="item">
+                    <a class="sub-btn">EMPLOYEE<i class="fas fa-caret-right dropdown" style="margin-left: 93px;"></i></a>
+                    <div class="sub-menu">
+                        <a href="p-employee.html" class="sub-item">Primary Employees</a>
+                        <a href="c-employee.html" class="sub-item">Secondary Employees</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="sub-btn">PAYROLL<i class="fas fa-caret-right dropdown"style="margin-left: 109px;"></i></a>
+                    <div class="sub-menu">
+                        <a href="allowances.html" class="sub-item">Allowance</a>
+                        <a href="deductions.html" class="sub-item">Deductions</a>
+                        <a href="payrollsetup.html" class="sub-item">Payroll setup</a>
+                        <a href="payeecalculator.html" class="sub-item">PAYE calculator.</a>
+                        <a href="https://taxpayerportal.tra.go.tz" class="sub-item">TAX Portal.</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="sub-btn">REPORTS<i class="fas fa-caret-right dropdown"style="margin-left: 109px;"></i></a>
+                    <div class="sub-menu">
+                    <a href="" class="sub-item">Summary Reports</a>
+                    <a href="" class="sub-item">Detailed Reports</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="sub-btn" style="margin-left: 10px;"> <i class="fas fa-user"></i></a>
+                    <div class="sub-menu">
+                    <a href="" class="sub-item">Change Password.</a>
+                    <a href="" class="sub-item" id="logout-link">Log Out.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--sidebar ends here-->
+   <section>
+        <div class="Econtainer" style="margin-top: -3px;">
+            <h1 style="font-size: 30px;">Employee Form</h1>
+            <div class="heading" style="margin-top: -5px;">
+                <a href="" class="box" id="personaldetails">Personal details <i class="fas fa-plus" style="margin-left: 5px;font-size: small;"></i></a>
+                <a href=""class="box" id="earningdeductiondetails">Earnings and Deductions<i class="fas fa-upload" style="margin-left: 5px;font-size: small;"></i></a>
+            </div>
+            <div class="wrapper">
+                <div class="personalinfo" id="personalinfo" style="margin-top: 10px;">
+                    <form>
+                        <!--I made this container in order to display the forms flex-->
+                        <div class="preproinfo">
+                            <div class="preliminaryinfo">
+                                <div class="form-group">
+                                    <label for="name">Id:</label>
+                                    <input type="number" id="empl-id" name="number" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">Full name:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Gender">Gender:</label>
+                                    <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Date of birth:</label>
+                                    <input type="date" id="date" name="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Marital status:</label>
+                                    <select id="gender" name="gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Divorsed">Divorsed</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="photo">Upload Photo:</label>
+                                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                                  </div>
+                            </div>
+                            <div class="professionaldetails" style="margin-top: -6px; width: 300px;padding: 5px;">
+                                <div class="form-group">
+                                    <label for="email">TIN No:</label>
+                                    <input type="number" id="tinnumber" name="tinnumber">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Phone:</label>
+                                    <input type="number" id="phonenumber" name="phonenumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="text" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">Department:</label>
+                                    <select id="department" name="department" required>
+                                    <option value="">Select department</option>
+                                    <option value="hr">Human Resources</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="It">IT</option>
+                                    <option value="sales">Sales</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">Position</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                                    
+                <div class="earningsdeduction" id="earningsdeduction" style=" margin-top: 10px;">
+                    <form>
+                        <div class="payrolcontainer">
+                            <div class="payrolcalculatordetails">
+                                <div class="form-group">
+                                    <label for="salary">Hire date:</label>
+                                    <input type="date" id="hdate" name="hdate">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="salary">Basic Salary:</label>
+                                    <input type="number" id="salary" name="salary" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="deductions">Taxable allowances:</label>
+                                    <select class="allowanceSelect" id="allowanceSelect" multiple>
+                                        <option value="item1">Item 1</option>
+                                        <option value="item2">Item 2</option>
+                                        <option value="item3">Item 3</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pension fund">Pension Fund:</label>
+                                    <select id="pensionfund" name="pensionfund">
+                                        <option value="">Select Pension fund</option>
+                                        <option value="NSSF">NSSF</option>
+                                        <option value="PSSSF">PSSSF</option>
+                                        <option value="PPF">PPF</option>
+                                    </select>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="salary">Pension number:</label>
+                                    <input type="number" id="pensionnumber" name="pensionnumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="deductions">Allowable deductions:</label>
+                                    <select class="deductionSelect" id="deductionSelect" multiple>
+                                        <option value="item1">Item 1</option>
+                                        <option value="item2">Item 2</option>
+                                        <option value="item3">Item 3</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            </div>
+
+                             <!--Payroll question about overtime and loan-->       
+                            <div class="otherpayroldetails">
+                                <div class="form-group" style="margin-top: 23px;">
+                                    <label for="overtime">Subjected to Overtime</label>
+                                    <select id="overtime" name="overtime" required>
+                                        <option value="">Select overtime</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-top: 48px;">
+                                    <label for="loan">Allowed to apply loan:</label>
+                                    <select id="overtime" name="overtime" required>
+                                        <option value="">Select overtime</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                        </div>    
+
+                    </form>
+                </div>
+            </div>
+            <!--Submit and back buttons-->
+            <div class="buttons" style="margin-top: 5px;">
+                <div class="form-group">
+                    <input type="submit" value="Submit" id="savebtn">
+                </div>
+                <div class="form-group" style="margin-left: 100px;margin-top: -40px;">
+                    <input type="submit" value="back" id="backbtn">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>   
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.sub-btn').click(function(){
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        });
+
+
+
+
+        //switch from personal details and earning and deductions.
+        const earningdeductiondetails = document.getElementById("earningdeductiondetails");
+        const personaldetails = document.getElementById("personaldetails");
+        const personalinfo = document.getElementById("personalinfo");
+        const earningsdeduction = document.getElementById("earningsdeduction");
+        const savebtn = document.getElementById("savebtn");
+        const backbtn = document.getElementById("backbtn");
+
+        earningdeductiondetails.addEventListener("click", (event) => {
+        event.preventDefault();
+        personalinfo.style.display = "none";
+        earningsdeduction.style.display = "block";
+        });
+
+        personaldetails.addEventListener("click", (event) => {
+        event.preventDefault();
+        earningsdeduction.style.display = "none";
+        personalinfo.style.display = "block";
+        });
+
+        //upload a photo
+        const photoInput = document.getElementById("photo");
+        photoInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            // Display the selected file name or perform other actions
+            console.log("Selected file:", file.name);
+        }
+        });
+
+    });
+
+    </script>
+
+
+    <!--selection input form-->
+    <script>
+        $(document).ready(function() {
+        $('#allowanceSelect').select2();
+        $('#deductionSelect').select2();
+        });
+    </script>
+
+    <script>
+        //submit button functionality
+
+        
+        //back button functionality
+        var backbtn = document.getElementById('backbtn')
+        backbtn.addEventListener("click", goBack);
+
+        function goBack(){
+            history.back();
+        }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+</body>
+</html>

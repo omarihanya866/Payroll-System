@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Home</title>
+    <link rel="stylesheet" href="adminstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <!--sidebar starts here-->
+    <section class="header">
+        <div class="sidebar">
+            <div class="menu">
+                <div class="item">
+                    <a href="user-dashboard.html" class="logo"><img src="/img/Logo new.png" alt=""></a>
+                </div>
+                <hr>
+                <div class="item">
+                    <a class="sub-btn">SETTINGS<i class="fas fa-caret-right dropdown" style="margin-left: 100px;"></i></a>
+                    <div class="sub-menu">
+                        <a href="co-info.html" class="sub-item">Company Information</a>
+                        <a href="user-info.html" class="sub-item">User Information</a>
+                    </div>
+                </div>  
+                <div class="item">
+                    <a class="sub-btn">EMPLOYEE<i class="fas fa-caret-right dropdown" style="margin-left: 93px;"></i></a>
+                    <div class="sub-menu">
+                        <a href="p-employee.html" class="sub-item">Primary Employees</a>
+                        <a href="c-employee.html" class="sub-item">Secondary Employees</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="sub-btn">PAYROLL<i class="fas fa-caret-right dropdown"style="margin-left: 109px;"></i></a>
+                    <div class="sub-menu">
+                        <a href="allowances.html" class="sub-item">Allowance</a>
+                        <a href="deductions.html" class="sub-item">Deductions</a>
+                        <a href="payrollsetup.html" class="sub-item">Payroll setup</a>
+                        <a href="payeecalculator.html" class="sub-item">PAYE calculator.</a>
+                        <a href="https://taxpayerportal.tra.go.tz" class="sub-item">TAX Portal.</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="sub-btn">REPORTS<i class="fas fa-caret-right dropdown"style="margin-left: 109px;"></i></a>
+                    <div class="sub-menu">
+                    <a href="" class="sub-item">Summary Reports</a>
+                    <a href="" class="sub-item">Detailed Reports</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a class="sub-btn" style="margin-left: 10px;"> <i class="fas fa-user"></i></a>
+                    <div class="sub-menu">
+                    <a href="" class="sub-item">Change Password.</a>
+                    <a href="" class="sub-item" id="logout-link">Log Out.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--sidebar ends here-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-btn').click(function(){
+                $('.side-bar').addClass('active');
+                $('.menu-btn').css("visibility", "hidden");
+            });
+    
+            $('.close-btn').click(function(){
+                $('.side-bar').removeClass('active');
+                $('.menu-btn').css("visibility", "visible");
+            });
+    
+            $('.sub-btn').click(function(){
+                $(this).next('.sub-menu').slideToggle();
+                $(this).find('.dropdown').toggleClass('rotate');
+            });
+    
+        
+         
+        });
+    
+    </script>
+
+    
+</body>
+</html>
